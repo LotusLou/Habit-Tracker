@@ -12,8 +12,6 @@ root.rowconfigure(0, weight= 0)
 root.rowconfigure(1, weight= 0)
 root.rowconfigure(2, weight= 1)
 
-def update():
-    root.after(1000, update)
 colors = {
     "Text" : "#04080F",
     "Primary Action" : "#507DBC",
@@ -31,21 +29,31 @@ label = tk.Label(header, text="Tracker", bg=colors["Header-Bar"])
 label.pack()
 
 #Date-bar
-date_bar = tk.Frame(root)
+date_bar = tk.Frame(root, bg=colors["App-Background"])
 date_bar.grid(row= 1, column= 0, sticky= "ew" )
-tracker_date = tk.Label(date_bar, text= str(datetime.datetime.today()).split()[0])
-tracker_date.pack(fill="x")
+date_bar.columnconfigure(0, weight= 1)
+date_bar.rowconfigure(0, weight= 1)
+tracker_date = tk.Label(date_bar, text= str(datetime.datetime.today()).split()[0], bg= colors["App-Background"])
+tracker_date.columnconfigure(0, weight= 1)
+tracker_date.rowconfigure(0, weight= 1)
+tracker_date.grid(row=0, column= 0, sticky= "nsew", pady=5)
 #Content
-content = tk.Frame(root)
-content.grid(row= 2, column= 0, sticky= "nsew")
-
-habits = ["Journaling", "2", "3", "4"]
+content = tk.Frame(root, bg=colors["App-Background"])
+content.grid(row= 2, column= 0, sticky= "nsew", padx= 10, pady= 10)
+content.columnconfigure(1, weight= 1)
+content.columnconfigure(0, weight= 1)
+content.rowconfigure(0, weight= 1)
+content.rowconfigure(1, weight= 1)
+habits = ["Journaling", "Streching", "Sublements", "No Socialmedia"]
 
 for i, habit in enumerate(habits):
     card = tk.Frame(content, bg= colors["Card/Panel"])
-    card.grid(row= i // 2 , column= i % 2, sticky="nsew")
-    habit_titel = tk.Label(card, text= habit , bg= colors["Card/Panel"])
+    card.grid(row= i // 2 , column= i % 2, sticky="nsew", padx= 5, pady= 5)
+    card.columnconfigure(0, weight= 1)
+    card.rowconfigure(1, weight= 1)
+    habit_titel = tk.Label(card, text= habit , bg= colors["Card/Panel"], anchor="center")
+    check_box = tk.Checkbutton(card, bg= colors["Card/Panel"])
     habit_titel.grid(column= 0, row= 0, sticky= "ew")
+    check_box.grid(column= 0, row= 1, sticky= "ns")
 
 root.mainloop()
-update()
