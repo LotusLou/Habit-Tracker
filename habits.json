@@ -1,0 +1,25 @@
+{
+    "habits": [
+            {
+                "id": "h1",
+                "name": "Journaling",
+                "entries" : {}
+                
+            },
+            {
+                "id": "h2",
+                "name": "Streching",
+                "entries" : {}
+            },
+            {
+                "id": "h3",
+                "name": "Sublements",
+                "entries" : {}
+            },
+            {
+                "id": "h4",
+                "name": "No Socialmedia",
+                "entries" : {}
+            }
+    ]
+}
