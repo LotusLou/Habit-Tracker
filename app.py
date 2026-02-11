@@ -1,5 +1,5 @@
 import json
-
+import tkinter as tk
 dateiname = "habits.json"
 default_state = { "habits" : [
             {
@@ -31,6 +31,7 @@ def load_state():
         with open(dateiname, "r", encoding="utf-8") as f:
             daten= json.load(f)
     except FileNotFoundError:
+        print(f"Fehler: Laden der Json hat nicht Funktioniert weil das File nicht gefunden wurde oder Kaputt ist. Standart Json wird geladen.")
         daten = default_state
     return daten
 
@@ -43,6 +44,15 @@ def save_state(state):
     except OSError:
         print("Fehler: Beim Speichern der neuen Daten. Zugang wurde Verweigert")
 
+def show_existing_Habits(daten):
+    habits = []
+    for i, habit in enumerate(daten["habits"]):
+        habit_name = data["habits"][i]["name"]
+        habits.append(habit_name)
+    return habits
+
+
 
 data= load_state()
-print(data)
+name = show_existing_Habits(data)
+print(name)

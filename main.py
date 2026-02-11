@@ -1,5 +1,6 @@
 import tkinter as tk
 import datetime
+from app import *
 #.\\venv\Scripts\Activate.ps1
 
 #Root Settings
@@ -44,7 +45,16 @@ content.columnconfigure(1, weight= 1)
 content.columnconfigure(0, weight= 1)
 content.rowconfigure(0, weight= 1)
 content.rowconfigure(1, weight= 1)
-habits = ["Journaling", "Streching", "Sublements", "No Socialmedia"]
+
+daten = load_state()
+habits = show_existing_Habits(daten)
+# Created the Habits
+
+def on_button_toggle(var, habit):
+    if var.get( ) == True:
+        print(f"Update: {habit} done")
+    else:
+        print(f"Update: {habit} undone")
 
 for i, habit in enumerate(habits):
     card = tk.Frame(content, bg= colors["Card/Panel"])
@@ -52,7 +62,8 @@ for i, habit in enumerate(habits):
     card.columnconfigure(0, weight= 1)
     card.rowconfigure(1, weight= 1)
     habit_titel = tk.Label(card, text= habit , bg= colors["Card/Panel"], anchor="center")
-    check_box = tk.Checkbutton(card, bg= colors["Card/Panel"])
+    var = tk.BooleanVar()
+    check_box = tk.Checkbutton(card, bg= colors["Card/Panel"], variable=var, onvalue=True, offvalue= False, command= lambda v=var, h=habit: on_button_toggle(v, h))
     habit_titel.grid(column= 0, row= 0, sticky= "ew")
     check_box.grid(column= 0, row= 1, sticky= "ns")
 
