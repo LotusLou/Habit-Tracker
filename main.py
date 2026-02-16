@@ -20,6 +20,7 @@ colors = {
     "Card/Panel" : "#BBD1EA",
     "App-Background" : "#DAE3E5",
 }
+t = str(datetime.datetime.today()).split()[0]
 #window
 root.config(bg= colors["App-Background"])
 
@@ -34,7 +35,7 @@ date_bar = tk.Frame(root, bg=colors["App-Background"])
 date_bar.grid(row= 1, column= 0, sticky= "ew" )
 date_bar.columnconfigure(0, weight= 1)
 date_bar.rowconfigure(0, weight= 1)
-tracker_date = tk.Label(date_bar, text= str(datetime.datetime.today()).split()[0], bg= colors["App-Background"])
+tracker_date = tk.Label(date_bar, text= t, bg= colors["App-Background"])
 tracker_date.columnconfigure(0, weight= 1)
 tracker_date.rowconfigure(0, weight= 1)
 tracker_date.grid(row=0, column= 0, sticky= "nsew", pady=5)
@@ -46,15 +47,23 @@ content.columnconfigure(0, weight= 1)
 content.rowconfigure(0, weight= 1)
 content.rowconfigure(1, weight= 1)
 
-daten = load_state()
-habits = show_existing_Habits(daten)
+state = load_state()
+habits, ids = show_existing_Habits(state)
 # Created the Habits
 
-def on_button_toggle(var, habit):
-    if var.get( ) == True:
-        print(f"Update: {habit} done")
-    else:
-        print(f"Update: {habit} undone")
+def on_button_toggle(var, habit_name, id):
+    for i ,habit in enumerate(state['habits']):
+        if id == habit["id"]:
+            if var.get( ) == True:
+                state["habits"][i]["entries"].update({t : True})
+                n = state["habits"][i]["entries"]
+                print(f"Update: {habit_name} done")
+                print(f"Json: {n}")
+            else:
+                state["habits"][i]["entries"].update({t : False})
+                print(f"Update: {habit_name} undone")
+
+
 
 for i, habit in enumerate(habits):
     card = tk.Frame(content, bg= colors["Card/Panel"])
@@ -63,7 +72,7 @@ for i, habit in enumerate(habits):
     card.rowconfigure(1, weight= 1)
     habit_titel = tk.Label(card, text= habit , bg= colors["Card/Panel"], anchor="center")
     var = tk.BooleanVar()
-    check_box = tk.Checkbutton(card, bg= colors["Card/Panel"], variable=var, onvalue=True, offvalue= False, command= lambda v=var, h=habit: on_button_toggle(v, h))
+    check_box = tk.Checkbutton(card, bg= colors["Card/Panel"], variable=var, onvalue=True, offvalue= False, command= lambda v=var, h=habit, id = ids[i]: on_button_toggle(v, h, id))
     habit_titel.grid(column= 0, row= 0, sticky= "ew")
     check_box.grid(column= 0, row= 1, sticky= "ns")
 

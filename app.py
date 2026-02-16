@@ -46,13 +46,18 @@ def save_state(state):
 
 def show_existing_Habits(daten):
     habits = []
+    ids = []
     for i, habit in enumerate(daten["habits"]):
         habit_name = data["habits"][i]["name"]
         habits.append(habit_name)
-    return habits
+        dic_id = data["habits"][i]["id"]
+        ids.append(dic_id)
+    return habits, ids
+
 
 
 
 data= load_state()
+print(data)
 name = show_existing_Habits(data)
 print(name)
