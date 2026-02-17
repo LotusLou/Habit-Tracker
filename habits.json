@@ -1,25 +1,30 @@
 {
     "habits": [
-            {
-                "id": "h1",
-                "name": "Journaling",
-                "entries" : {}
-                
-            },
-            {
-                "id": "h2",
-                "name": "Streching",
-                "entries" : {}
-            },
-            {
-                "id": "h3",
-                "name": "Sublements",
-                "entries" : {}
-            },
-            {
-                "id": "h4",
-                "name": "No Socialmedia",
-                "entries" : {}
+        {
+            "id": "h1",
+            "name": "Journaling",
+            "entries": {}
+        },
+        {
+            "id": "h2",
+            "name": "Streching",
+            "entries": {
+                "2026-02-16": true
             }
+        },
+        {
+            "id": "h3",
+            "name": "Sublements",
+            "entries": {
+                "2026-02-16": true
+            }
+        },
+        {
+            "id": "h4",
+            "name": "No Socialmedia",
+            "entries": {
+                "2026-02-16": true
+            }
+        }
     ]
 }

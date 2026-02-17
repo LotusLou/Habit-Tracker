@@ -54,6 +54,12 @@ def show_existing_Habits(daten):
         ids.append(dic_id)
     return habits, ids
 
+def close_Handler (state, root):
+    try:
+        save_state(state)
+    except:
+        print("Fehler beim Speichern des State")
+    root.destroy()
 
 
 

@@ -9,7 +9,7 @@ root.title("Mein Habit Tracker")
 root.geometry("400x300")
 root.minsize(450, 350)
 root.columnconfigure(0, weight=1)
-root.rowconfigure(0, weight= 0)
+root.rowconfigure(0, weight= 0,)
 root.rowconfigure(1, weight= 0)
 root.rowconfigure(2, weight= 1)
 
@@ -22,7 +22,7 @@ colors = {
 }
 t = str(datetime.datetime.today()).split()[0]
 #window
-root.config(bg= colors["App-Background"])
+root.config(bg= colors["App-Background"], )
 
 #Header
 header = tk.Frame(root, bg=colors["Header-Bar"])
@@ -76,4 +76,7 @@ for i, habit in enumerate(habits):
     habit_titel.grid(column= 0, row= 0, sticky= "ew")
     check_box.grid(column= 0, row= 1, sticky= "ns")
 
+
+
+root.protocol("WM_DELETE_WINDOW", lambda r= root, s = state :close_Handler(s, r))
 root.mainloop()
