@@ -22,7 +22,7 @@ colors = {
 }
 t = str(datetime.datetime.today()).split()[0]
 #window
-root.config(bg= colors["App-Background"], )
+root.config(bg= colors["App-Background"])
 
 #Header
 header = tk.Frame(root, bg=colors["Header-Bar"])
@@ -49,6 +49,7 @@ content.rowconfigure(1, weight= 1)
 
 state = load_state()
 habits, ids = show_existing_Habits(state)
+vars_tk = {}
 # Created the Habits
 
 def on_button_toggle(var, habit_name, id):
@@ -71,7 +72,13 @@ for i, habit in enumerate(habits):
     card.columnconfigure(0, weight= 1)
     card.rowconfigure(1, weight= 1)
     habit_titel = tk.Label(card, text= habit , bg= colors["Card/Panel"], anchor="center")
-    var = tk.BooleanVar()
+    #Start Value suchen
+    habit_obj = state["habits"][i]
+    entries = habit_obj.get("entries", {})
+    state_value= entries.get(t, False)
+    var = tk.BooleanVar(card, state_value) 
+    vars_tk.update({ids[i] : var})
+
     check_box = tk.Checkbutton(card, bg= colors["Card/Panel"], variable=var, onvalue=True, offvalue= False, command= lambda v=var, h=habit, id = ids[i]: on_button_toggle(v, h, id))
     habit_titel.grid(column= 0, row= 0, sticky= "ew")
     check_box.grid(column= 0, row= 1, sticky= "ns")

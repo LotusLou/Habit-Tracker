@@ -3,27 +3,33 @@
         {
             "id": "h1",
             "name": "Journaling",
-            "entries": {}
+            "entries": {
+                "2026-02-17": false,
+                "2026-02-18": true
+            }
         },
         {
             "id": "h2",
             "name": "Streching",
             "entries": {
-                "2026-02-16": true
+                "2026-02-16": true,
+                "2026-02-18": true
             }
         },
         {
             "id": "h3",
             "name": "Sublements",
             "entries": {
-                "2026-02-16": true
+                "2026-02-16": true,
+                "2026-02-18": true
             }
         },
         {
             "id": "h4",
             "name": "No Socialmedia",
             "entries": {
-                "2026-02-16": true
+                "2026-02-16": true,
+                "2026-02-18": true
             }
         }
     ]

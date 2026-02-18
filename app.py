@@ -30,6 +30,7 @@ def load_state():
     try:
         with open(dateiname, "r", encoding="utf-8") as f:
             daten= json.load(f)
+        
     except FileNotFoundError:
         print(f"Fehler: Laden der Json hat nicht Funktioniert weil das File nicht gefunden wurde oder Kaputt ist. Standart Json wird geladen.")
         daten = default_state
@@ -48,9 +49,9 @@ def show_existing_Habits(daten):
     habits = []
     ids = []
     for i, habit in enumerate(daten["habits"]):
-        habit_name = data["habits"][i]["name"]
+        habit_name = daten["habits"][i]["name"]
         habits.append(habit_name)
-        dic_id = data["habits"][i]["id"]
+        dic_id = daten["habits"][i]["id"]
         ids.append(dic_id)
     return habits, ids
 
@@ -61,9 +62,3 @@ def close_Handler (state, root):
         print("Fehler beim Speichern des State")
     root.destroy()
 
-
-
-data= load_state()
-print(data)
-name = show_existing_Habits(data)
-print(name)
