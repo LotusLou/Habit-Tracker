@@ -5,7 +5,8 @@
             "name": "Journaling",
             "entries": {
                 "2026-02-17": false,
-                "2026-02-18": true
+                "2026-02-18": true,
+                "2026-02-23": true
             }
         },
         {
@@ -13,7 +14,9 @@
             "name": "Streching",
             "entries": {
                 "2026-02-16": true,
-                "2026-02-18": true
+                "2026-02-18": true,
+                "2026-02-23": true,
+                "2026-02-24": false
             }
         },
         {
@@ -21,7 +24,9 @@
             "name": "Sublements",
             "entries": {
                 "2026-02-16": true,
-                "2026-02-18": true
+                "2026-02-18": true,
+                "2026-02-23": true,
+                "2026-02-24": false
             }
         },
         {
@@ -29,7 +34,9 @@
             "name": "No Socialmedia",
             "entries": {
                 "2026-02-16": true,
-                "2026-02-18": true
+                "2026-02-18": true,
+                "2026-02-23": true,
+                "2026-02-24": false
             }
         }
     ]

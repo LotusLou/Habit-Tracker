@@ -53,27 +53,25 @@ vars_tk = {}
 # Created the Habits
 
 def on_button_toggle(var, habit_name, id):
-    for i ,habit in enumerate(state['habits']):
+    for habit in state['habits']:
         if id == habit["id"]:
             if var.get( ) == True:
-                state["habits"][i]["entries"].update({t : True})
-                n = state["habits"][i]["entries"]
+                habit["entries"].update({t : True})
                 print(f"Update: {habit_name} done")
-                print(f"Json: {n}")
             else:
-                state["habits"][i]["entries"].update({t : False})
+                habit["entries"].update({t : False})
                 print(f"Update: {habit_name} undone")
 
 
 
-for i, habit in enumerate(habits):
+for i, habit in enumerate(state["habits"]):
     card = tk.Frame(content, bg= colors["Card/Panel"])
     card.grid(row= i // 2 , column= i % 2, sticky="nsew", padx= 5, pady= 5)
     card.columnconfigure(0, weight= 1)
     card.rowconfigure(1, weight= 1)
-    habit_titel = tk.Label(card, text= habit , bg= colors["Card/Panel"], anchor="center")
+    habit_titel = tk.Label(card, text= habit["name"] , bg= colors["Card/Panel"], anchor="center")
     #Start Value suchen
-    habit_obj = state["habits"][i]
+    habit_obj = find_habit_obj(habit["id"], state)
     entries = habit_obj.get("entries", {})
     state_value= entries.get(t, False)
     var = tk.BooleanVar(card, state_value) 

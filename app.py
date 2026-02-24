@@ -49,11 +49,17 @@ def show_existing_Habits(daten):
     habits = []
     ids = []
     for i, habit in enumerate(daten["habits"]):
-        habit_name = daten["habits"][i]["name"]
+        habit_name = habit["name"]
         habits.append(habit_name)
-        dic_id = daten["habits"][i]["id"]
+        dic_id = habit["id"]
         ids.append(dic_id)
     return habits, ids
+
+def find_habit_obj(id, state):
+    for habit in state["habits"]:
+        if id == habit["id"]:
+            return habit
+            break
 
 def close_Handler (state, root):
     try:
@@ -61,4 +67,3 @@ def close_Handler (state, root):
     except:
         print("Fehler beim Speichern des State")
     root.destroy()
-
